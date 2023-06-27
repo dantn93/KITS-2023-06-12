@@ -1,6 +1,6 @@
 package oop;
 
-class SportsCar extends Car {
+public class SportsCar extends Car {
     private int price;
 
     public SportsCar(String brand, String color, int price) {

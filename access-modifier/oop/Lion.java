@@ -27,6 +27,12 @@ public class Lion extends Animal implements Activity, SocialActivity {
         this.name = name;
     }
 
+    @Override
+    public void run() {
+        // Activity.super.run();
+        System.out.println("Lion running!");
+    }
+
     public void swim() {
         System.out.println(this.name + " can swim");
     }
