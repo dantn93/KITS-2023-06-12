@@ -11,10 +11,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    @Query("SELECT p FROM Product p")
-    List<Product> getAllProduct();
-    List<Product> findByNameContaining(String name);
-    Page<Product> findByNameContaining(String name, Pageable pageable);
+    @Query("SELECT c FROM Category c")
+    List<Category> getAllCategory();
+
+    @Query("SELECT c FROM Category c WHERE c.categoryId = ?1")
+    Category getById(Long id);
+
+    List<Category> findByNameContaining(String name);
+    Page<Category> findByNameContaining(String name, Pageable pageable);
 }

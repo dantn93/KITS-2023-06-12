@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -26,5 +27,5 @@ public class Category implements Serializable {
 
     //    cascade giúp, khi xoá category thì sẽ tự động xoá hết tất cả products liên quan
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private Set<Product> products;
+    private List<Product> products;
 }
