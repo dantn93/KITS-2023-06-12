@@ -1,5 +1,6 @@
 package edu.kits.finalproject.Controller.Admin;
 
+import edu.kits.finalproject.Domain.Product;
 import edu.kits.finalproject.Model.ProductDto;
 import edu.kits.finalproject.Model.ResponseDto;
 import edu.kits.finalproject.Service.ProductService;
@@ -10,6 +11,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("admin/products")
@@ -42,6 +45,10 @@ public class ProductController {
     @GetMapping("")
     @ResponseBody
     public ResponseDto list(ModelMap model) {
+        List<Product> result = productService.getAllProducts();
+        for(Product prd : result) {
+            System.out.println("======> " + prd.getProductId() + " - " + prd.getName());
+        }
         return new ResponseDto(
                 "", "", "", "USER_NO_EXIST"
         );

@@ -21,6 +21,11 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
+    public List<Product> getAllProducts(){
+        return productRepository.getAllProduct();
+    }
+
+    @Override
     public void flush() {
         productRepository.flush();
     }

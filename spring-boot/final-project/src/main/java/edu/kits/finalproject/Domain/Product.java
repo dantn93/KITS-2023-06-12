@@ -18,9 +18,9 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
-    @Column(columnDefinition = "nvarchar(100) not null")
+    @Column(columnDefinition = "nvarchar(100) not null", nullable = true)
     private String name;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "0")
     private int quantity;
     @Column(nullable = false)
     private double unitPrice;

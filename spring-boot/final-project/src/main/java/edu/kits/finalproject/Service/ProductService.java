@@ -14,6 +14,8 @@ import java.util.function.Function;
 public interface ProductService {
     void flush();
 
+    <S extends Product> List<Product> getAllProducts();
+
     <S extends Product> S saveAndFlush(S entity);
 
     <S extends Product> List<S> saveAllAndFlush(Iterable<S> entities);
