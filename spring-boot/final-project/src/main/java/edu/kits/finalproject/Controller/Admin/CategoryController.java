@@ -67,4 +67,14 @@ public class CategoryController {
         System.out.println(cat.getProducts().get(0).getName());
         return new ResponseDto();
     }
+
+    @Controller
+    @RequestMapping("")
+    public static class HomeController {
+        @GetMapping("/test")
+        public String test() {
+            System.out.println("TESTTT");
+            return "Testing message";
+        }
+    }
 }
