@@ -1,6 +1,6 @@
 package edu.kits.finalproject.Service;
 
-import edu.kits.finalproject.Domain.Category;
+import edu.kits.finalproject.Entity.Category;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
