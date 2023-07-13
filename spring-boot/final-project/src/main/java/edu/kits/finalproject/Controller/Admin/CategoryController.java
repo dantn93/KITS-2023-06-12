@@ -1,9 +1,9 @@
 package edu.kits.finalproject.Controller.Admin;
 
-import edu.kits.finalproject.Domain.Category;
-import edu.kits.finalproject.Domain.Product;
+import edu.kits.finalproject.Entity.Category;
+import edu.kits.finalproject.Entity.Product;
 import edu.kits.finalproject.Model.CategoryDto;
-import edu.kits.finalproject.Model.ResponseDto;
+import edu.kits.finalproject.Model.RegisterResponseDto;
 import edu.kits.finalproject.Service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,55 +16,56 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("admin/categories")
+@RequestMapping("api/admin/categories")
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
     @RequestMapping("add")
-    public ResponseDto add() {
-        return new ResponseDto();
+    public RegisterResponseDto add() {
+        return new RegisterResponseDto();
     }
 
     @GetMapping("edit/{categoryId}")
-    public ResponseDto edit(ModelMap model, @PathVariable("categoryId") Long categoryId) {
-        return new ResponseDto();
+    public RegisterResponseDto edit(ModelMap model, @PathVariable("categoryId") Long categoryId) {
+        return new RegisterResponseDto();
     }
 
     @PostMapping("saveOrUpdate")
-    public ResponseDto saveOrUpdate(ModelMap model, @Valid CategoryDto dto, BindingResult result) {
+    public RegisterResponseDto saveOrUpdate(ModelMap model, @Valid CategoryDto dto, BindingResult result) {
         if (result.hasErrors()) {
             for (Object object : result.getAllErrors()) {
                 if (object instanceof FieldError fieldError) {
-                    return new ResponseDto();
+                    return new RegisterResponseDto();
                 }
             }
         }
-        return new ResponseDto();
+        return new RegisterResponseDto();
     }
 
     @GetMapping("")
     @ResponseBody
-    public ResponseDto list(ModelMap model) {
-        List<Category> result = categoryService.getAllCategorys();
-        for(Category category : result) {
-            List<Product> prds = category.getProducts();
-            String prdOut = "";
-            for(Product prd : prds){
-                prdOut += prd.getProductId() + " - " + prd.getName() + "\n";
-            }
-            System.out.println("======> " + category.getCategoryId() + " - " + category.getName() + "\n" + prdOut);
-        }
-        return new ResponseDto(
-                "", "", "", "USER_NO_EXIST"
-        );
+    public String list(ModelMap model) {
+        return "Get all categories";
+//        List<Category> result = categoryService.getAllCategorys();
+//        for(Category category : result) {
+//            List<Product> prds = category.getProducts();
+//            String prdOut = "";
+//            for(Product prd : prds){
+//                prdOut += prd.getProductId() + " - " + prd.getName() + "\n";
+//            }
+//            System.out.println("======> " + category.getCategoryId() + " - " + category.getName() + "\n" + prdOut);
+//        }
+//        return new RegisterResponseDto(
+//                "", "", "", "USER_NO_EXIST"
+//        );
     }
 
     @GetMapping("/{id}")
     @ResponseBody
-    public ResponseDto getById(@PathVariable("id") Long id) {
+    public RegisterResponseDto getById(@PathVariable("id") Long id) {
         Category cat = categoryService.getById(id);
         System.out.println(cat.getProducts().get(0).getName());
-        return new ResponseDto();
+        return new RegisterResponseDto();
     }
 }

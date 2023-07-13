@@ -3,14 +3,15 @@ package edu.kits.finalproject.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.coyote.Response;
+
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseDto {
+public class RegisterResponseDto implements Serializable {
     private String message;
-    private String data;
+    private Object data;
     private String error;
-    private String error_code;
+    private String messageCode;
 }

@@ -1,16 +1,12 @@
-package edu.kits.finalproject.Domain;
+package edu.kits.finalproject.Entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor

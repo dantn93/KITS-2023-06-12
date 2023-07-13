@@ -1,4 +1,4 @@
-package edu.kits.finalproject.Domain;
+package edu.kits.finalproject.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

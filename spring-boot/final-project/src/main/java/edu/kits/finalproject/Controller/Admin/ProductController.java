@@ -1,8 +1,8 @@
 package edu.kits.finalproject.Controller.Admin;
 
-import edu.kits.finalproject.Domain.Product;
+import edu.kits.finalproject.Entity.Product;
 import edu.kits.finalproject.Model.ProductDto;
-import edu.kits.finalproject.Model.ResponseDto;
+import edu.kits.finalproject.Model.RegisterResponseDto;
 import edu.kits.finalproject.Service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,41 +15,41 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("admin/products")
+@RequestMapping("api/admin/products")
 public class ProductController {
     @Autowired
     ProductService productService;
 
     @RequestMapping("add")
-    public ResponseDto add() {
-        return new ResponseDto();
+    public RegisterResponseDto add() {
+        return new RegisterResponseDto();
     }
 
     @GetMapping("edit/{productId}")
-    public ResponseDto edit(ModelMap model, @PathVariable("productId") Long productId) {
-        return new ResponseDto();
+    public RegisterResponseDto edit(ModelMap model, @PathVariable("productId") Long productId) {
+        return new RegisterResponseDto();
     }
 
     @PostMapping("saveOrUpdate")
-    public ResponseDto saveOrUpdate(ModelMap model, @Valid ProductDto dto, BindingResult result) {
+    public RegisterResponseDto saveOrUpdate(ModelMap model, @Valid ProductDto dto, BindingResult result) {
         if (result.hasErrors()) {
             for (Object object : result.getAllErrors()) {
                 if (object instanceof FieldError fieldError) {
-                    return new ResponseDto();
+                    return new RegisterResponseDto();
                 }
             }
         }
-        return new ResponseDto();
+        return new RegisterResponseDto();
     }
 
     @GetMapping("")
     @ResponseBody
-    public ResponseDto list(ModelMap model) {
+    public RegisterResponseDto list(ModelMap model) {
         List<Product> result = productService.getAllProducts();
         for(Product prd : result) {
             System.out.println("======> " + prd.getProductId() + " - " + prd.getName());
         }
-        return new ResponseDto(
+        return new RegisterResponseDto(
                 "", "", "", "USER_NO_EXIST"
         );
     }

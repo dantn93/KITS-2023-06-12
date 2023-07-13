@@ -1,6 +1,6 @@
 package edu.kits.finalproject.Service.impl;
 
-import edu.kits.finalproject.Domain.Category;
+import edu.kits.finalproject.Entity.Category;
 import edu.kits.finalproject.Repository.CategoryRepository;
 import edu.kits.finalproject.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
